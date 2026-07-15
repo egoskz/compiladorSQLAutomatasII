@@ -25,6 +25,27 @@ class AnalizadorLexico:
         self.tokens = CommonTokenStream(self.lexer)
         self.tokens.fill()
 
+    def obtener_tokens(self):
+        lista = []
+
+        for token in self.tokens.tokens:
+            if token.type == Token.EOF:
+                continue
+
+            lista.append({
+                "Lexema": token.text,
+                "Token": self.lexer.symbolicNames[token.type],
+                "Tipo": token.type,
+                "Línea": token.line,
+                "Columna": token.column
+            })
+
+        return lista
+
+
+    def obtener_errores(self):
+        return self.errores.lista
+
     def imprimir_tokens(self):
         print("\nTOKENS")
         print("-" * 70)
@@ -60,3 +81,5 @@ class AnalizadorLexico:
                 print(
                     f"Linea {error[0]}, columna {error[1]}: {error[2]}"
                 )
+    
+    
