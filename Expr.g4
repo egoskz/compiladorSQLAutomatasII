@@ -1,0 +1,119 @@
+grammar Expr;
+
+inicio  : EOF ;
+
+CREATE : 'CREATE';
+DATABASE : 'DATABASE';
+USE : 'USE';
+TABLE : 'TABLE';
+ALTER : 'ALTER';
+DROP : 'DROP';
+TRUNCATE : 'TRUNCATE';
+
+SELECT : 'SELECT';
+INSERT : 'INSERT';
+UPDATE : 'UPDATE';
+DELETE : 'DELETE';
+
+INTO : 'INTO';
+VALUES : 'VALUES';
+FROM : 'FROM';
+WHERE : 'WHERE';
+SET : 'SET';
+
+GROUP : 'GROUP';
+ORDER : 'ORDER';
+BY : 'BY';
+HAVING : 'HAVING';
+
+JOIN : 'JOIN';
+INNER : 'INNER';
+LEFT : 'LEFT';
+RIGHT : 'RIGHT';
+FULL : 'FULL';
+ON : 'ON';
+
+AS : 'AS';
+DISTINCT : 'DISTINCT';
+LIMIT : 'LIMIT';
+
+PRIMARY : 'PRIMARY';
+FOREIGN : 'FOREIGN';
+KEY : 'KEY';
+REFERENCES : 'REFERENCES';
+
+NOT : 'NOT';
+NULL : 'NULL';
+UNIQUE : 'UNIQUE';
+CHECK : 'CHECK';
+DEFAULT : 'DEFAULT';
+AUTO_INCREMENT : 'AUTO_INCREMENT';
+
+AND : 'AND';
+OR : 'OR';
+LIKE : 'LIKE';
+IN : 'IN';
+BETWEEN : 'BETWEEN';
+IS : 'IS';
+EXISTS : 'EXISTS';
+
+INT : 'INT';
+INTEGER : 'INTEGER';
+BIGINT : 'BIGINT';
+SMALLINT : 'SMALLINT';
+
+FLOAT : 'FLOAT';
+DOUBLE : 'DOUBLE';
+DECIMAL : 'DECIMAL';
+NUMERIC : 'NUMERIC';
+
+CHAR : 'CHAR';
+VARCHAR : 'VARCHAR';
+TEXT : 'TEXT';
+
+DATE : 'DATE';
+TIME : 'TIME';
+DATETIME : 'DATETIME';
+TIMESTAMP : 'TIMESTAMP';
+
+BOOLEAN : 'BOOLEAN';
+BIT : 'BIT';
+
+MAS : '+';
+MENOS : '-';
+MULT : '*';
+DIV : '/';
+MOD : '%';
+
+IGUAL : '=';
+MENOR : '<';
+MAYOR : '>';
+MENORIGUAL : '<=';
+MAYORIGUAL : '>=';
+DIFERENTE : '<>' | '!=';
+
+PARIZQ : '(';
+PARDER : ')';
+
+CORIZQ : '[';
+CORDER : ']';
+
+COMA : ',';
+PUNTO : '.';
+PUNTOYCOMA : ';';
+
+DECIMAL_NUM : [0-9]+ '.' [0-9]+;
+
+ENTERO : [0-9]+;
+
+CADENA: '\'' (~['\r\n])* '\'';
+
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
+
+COMENTARIO: '--' ~[\r\n]* -> skip;
+
+COMENTARIO_BLOQUE: '/*' .*? '*/' -> skip;
+
+WS: [ \t\r\n]+ -> skip;
+
+ERROR: .;
