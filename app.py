@@ -1,11 +1,13 @@
 import streamlit as st
 
 from analizador_lexico import AnalizadorLexico
+from helper_sintactico import HelperSintactico
+
 
 st.set_page_config(page_title="Compilador SQL")
 
 st.title("Compilador SQL")
-st.write("Analizador Léxico con ANTLR")
+st.write("Analizador Léxico y Sintáctico con ANTLR")
 
 archivo = st.file_uploader(
     "Selecciona un archivo SQL",
@@ -37,11 +39,28 @@ if archivo is not None:
 
     else:
 
-        st.table([
-            {
-                "Línea": e[0],
-                "Columna": e[1],
-                "Mensaje": e[2]
-            }
-            for e in errores
-        ])
+        st.table(
+            [
+                {
+                    "Línea": e[0],
+                    "Columna": e[1],
+                    "Mensaje": e[2]
+                }
+                for e in errores
+            ]
+        )
+
+    helper = HelperSintactico()
+
+    correcto, mensaje, errores = helper.analizar(codigo)
+
+    st.subheader("Análisis Sintáctico")
+
+    if correcto:
+        st.success(mensaje)
+
+    else:
+
+        st.error(mensaje)
+
+        st.table(errores)

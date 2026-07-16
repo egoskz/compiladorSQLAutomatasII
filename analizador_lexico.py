@@ -1,6 +1,6 @@
 from antlr4 import *
 from antlr4.error.ErrorListener import ErrorListener
-from exprLexer import ExprLexer
+from ExprLexer import ExprLexer
 
 class ErroresLexicos(ErrorListener):
 
