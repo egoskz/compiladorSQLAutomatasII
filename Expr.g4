@@ -19,6 +19,10 @@ crearBaseDatos
     : CREATE DATABASE ID PUNTOYCOMA
     ;
 
+crearLogin
+    : CREATE LOGIN ID PUNTOYCOMA
+    ;
+
 usarBaseDatos
     : USE ID PUNTOYCOMA
     ;
@@ -135,6 +139,7 @@ DROP : 'DROP';
 SELECT : 'SELECT';
 INSERT : 'INSERT';
 UPDATE : 'UPDATE';
+LOGIN  : 'LOGIN';
 DELETE : 'DELETE';
 
 INTO : 'INTO';
@@ -182,9 +187,12 @@ DIFERENTE : '<>' | '!=';
 
 PARIZQ : '(';
 PARDER : ')';
+CORIZQ: '[';
+CORDER: ']';
 
 COMA : ',';
 PUNTOYCOMA : ';';
+PUNTO: '.';
 
 DECIMAL_NUM : [0-9]+ '.' [0-9]+;
 ENTERO : [0-9]+;
